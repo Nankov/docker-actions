@@ -32,10 +32,10 @@ jobs:
  
 
     - name: Tag image
-      run: docker tag nankov/node  693725700380.dkr.ecr.eu-west-1.amazonaws.com/appstart-repo
+      run: docker tag nankov/node  693725700380.dkr.ecr.eu-west-1.amazonaws.com/appstart-repo:1
        
     - name: Push image to ECR
-      run: docker push 693725700380.dkr.ecr.eu-west-1.amazonaws.com/appstart-repo
+      run: docker push 693725700380.dkr.ecr.eu-west-1.amazonaws.com/appstart-repo:1
   
     
     
