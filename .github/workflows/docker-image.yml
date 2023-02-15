@@ -15,8 +15,22 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: Provide auth credentials
+    - name: Configure AWS Credentials
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.ACCESSKEY }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.SECRETACCESSKEY }}
+      run: |
+        mkdir -p ~/.aws
+        touch ~/.aws/credentials
+
+        echo "[default]
+        aws_access_key_id = $AWS_ACCESS_KEY_ID
+        aws_secret_access_key = $AWS_SECRET_ACCESS_KEY
+        region = eu-west-1" > ~/.aws/credentials 
+
+    - name: Configure permissions
       run: aws ecr get-login-password --region eu-west-1 | docker login --username AWS --password-stdin 693725700380.dkr.ecr.eu-west-1.amazonaws.com
+
 
     - name: Build the Docker image
       run: docker build -t nankov/node .
