@@ -27,27 +27,20 @@ jobs:
       uses: aws-actions/amazon-ecr-login@v1
 
   build:
-      needs: auth
-      runs-on: ubuntu-latest
-      steps:
-      - uses: actions/checkout@v3
-      - uses: ./.github/workflows/build.yml
-        with:
+       needs: auth
+       uses: ./.github/workflows/build.yml
+       with:
           image-name: nankov/node
  
   tag-push:
-      runs-on: ubuntu-latest
       needs: build
-      steps:
-      -  uses: actions/checkout@v3
-      -  name: Tag-push
-         uses: ./.github/workflows/tag-push.yml
-         with:
-           image-name: nankov/node
-           tag: '1'
-           aws-region: eu-west-1
-           account-id: '693725700380'
-           repository: appstart-repo
+      uses: ./.github/workflows/tag-push.yml
+      with:
+          image-name: nankov/node
+          tag: '1'
+          aws-region: eu-west-1
+          account-id: '693725700380'
+          repository: appstart-repo
 
   
     
