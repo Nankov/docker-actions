@@ -1,0 +1,29 @@
+name: Tag and push docker image to ECR
+
+on:
+  workflow_call:
+    inputs:
+      aws-region:
+        required: true
+        type: string
+      account-id: 
+        required: true
+        type: string
+      tag:
+        required: true
+        type: string
+      repository:
+        required: true
+        type: string
+      image-name:
+        required: true
+        type: string
+
+jobs:
+  tag-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: tag
+        run: docker tag ${{inputs.image-name}} ${{inputs.account-id}}.dkr.ecr.${{inputs.aws-region}}/${{inputs.repository}}:${{inputs.tag}}
+      - name: tag
+        run: docker push ${{inputs.account-id}}.dkr.ecr.${{inputs.aws-region}}/${{inputs.repository}}:${{inputs.tag}}
