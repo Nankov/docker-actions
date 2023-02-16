@@ -28,13 +28,13 @@ jobs:
 
 
     - name: Build the Docker image
-      uses: nankov/docker-actions@build
+      uses: ./.github/workflows/build.yml
       with:
         image-name: nankov/node
  
 
     - name: Tag-push
-      uses: nankov/docker-actions@tag-push
+      uses: ./.github/workflows/tag-push.yml
       with:
         image-name: nankov/node
         tag: '1'
