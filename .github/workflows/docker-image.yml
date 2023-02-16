@@ -27,8 +27,8 @@ jobs:
       uses: aws-actions/amazon-ecr-login@v1
 
     - uses: actions/checkout@v3
-    - name: Build the Docker image
-      uses: ./.github/workflows/build.yml
+      
+    - uses: ./.github/workflows/build.yml
       with:
         image-name: nankov/node
  
