@@ -13,4 +13,4 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Building image
-        run: docker build -t ${{inputs.image-name}} .
+        run: docker build -t ${{inputs.image-name}} ..
