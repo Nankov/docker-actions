@@ -27,8 +27,10 @@ jobs:
       uses: aws-actions/amazon-ecr-login@v1
 
   build:
+      needs: auth
       runs-on: ubuntu-latest
       steps:
+      - uses: actions/checkout@v3
       - uses: ./.github/workflows/build.yml
         with:
           image-name: nankov/node
@@ -37,6 +39,7 @@ jobs:
       runs-on: ubuntu-latest
       needs: build
       steps:
+      -  uses: actions/checkout@v3
       -  name: Tag-push
          uses: ./.github/workflows/tag-push.yml
          with:
