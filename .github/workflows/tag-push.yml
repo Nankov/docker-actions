@@ -23,6 +23,7 @@ jobs:
   tag-push:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - name: tag
         run: docker tag ${{inputs.image-name}} ${{inputs.account-id}}.dkr.ecr.${{inputs.aws-region}}/${{inputs.repository}}:${{inputs.tag}}
       - name: tag
