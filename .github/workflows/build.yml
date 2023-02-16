@@ -8,10 +8,16 @@ on:
         type: string
 
 jobs:
-  build-image:
+
+  checkout:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+    - uses: actions/checkout@v3
+ 
+  build-image:
+    runs-on: ubuntu-latest
+    needs: checkout
+    steps:
       
       - name: Building image
         run: docker build -t ${{inputs.image-name}} .
