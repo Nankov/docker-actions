@@ -31,16 +31,12 @@ jobs:
        uses: ./.github/workflows/build.yml
        with:
           image-name: nankov/node
- 
-  tag-push:
-      needs: build
-      uses: ./.github/workflows/tag-push.yml
-      with:
-          image-name: nankov/node
           tag: '1'
           aws-region: eu-west-1
           account-id: '693725700380'
           repository: appstart-repo
+ 
+          
 
   
     
