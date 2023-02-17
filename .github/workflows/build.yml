@@ -6,6 +6,18 @@ on:
       image-name:
         required: true
         type: string
+      aws-region:
+        required: true
+        type: string
+      account-id: 
+        required: true
+        type: string
+      tag:
+        required: true
+        type: string
+      repository:
+        required: true
+        type: string
 
 jobs:
 
@@ -16,3 +28,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: Building image
         run: docker build -t ${{inputs.image-name}} .
+      - name: tag
+        run: docker tag ${{inputs.image-name}} ${{inputs.account-id}}.dkr.ecr.${{inputs.aws-region}}/${{inputs.repository}}:${{inputs.tag}}
+      - name: tag
+        run: docker push ${{inputs.account-id}}.dkr.ecr.${{inputs.aws-region}}/${{inputs.repository}}:${{inputs.tag}}
