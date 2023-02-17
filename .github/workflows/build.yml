@@ -29,6 +29,6 @@ jobs:
       - name: Building image
         run: docker build -t ${{inputs.image-name}} .
       - name: tag
-        run: docker tag ${{inputs.image-name}} ${{inputs.account-id}}.dkr.ecr.${{inputs.aws-region}}/${{inputs.repository}}:${{inputs.tag}}
+        run: docker tag ${{inputs.image-name}} ${{inputs.account-id}}.dkr.ecr.${{inputs.aws-region}}.amazonaws.com/${{inputs.repository}}:${{inputs.tag}}
       - name: tag
-        run: docker push ${{inputs.account-id}}.dkr.ecr.${{inputs.aws-region}}/${{inputs.repository}}:${{inputs.tag}}
+        run: docker push ${{inputs.account-id}}.dkr.ecr.${{inputs.aws-region}}.amazonaws.com/${{inputs.repository}}:${{inputs.tag}}
