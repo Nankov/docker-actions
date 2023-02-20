@@ -29,7 +29,7 @@ app.use(session({
 
 app.get('/', function(req, res) {
   res.json({
-    status: "workflow calls"
+    status: "fixed workflow"
   });
 });
 
