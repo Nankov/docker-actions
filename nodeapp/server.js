@@ -29,7 +29,7 @@ app.use(session({
 
 app.get('/', function(req, res) {
   res.json({
-    status: "fixed workflow"
+    status: "hello with iam roles"
   });
 });
 
