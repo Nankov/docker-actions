@@ -8,10 +8,8 @@ on:
 
 jobs:
 
-  auth:
-
+  push-to-ecr:
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
 
@@ -25,11 +23,9 @@ jobs:
     - name: Login to Amazon ECR
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v1
-
-  build:
-       needs: auth
-       uses: ./.github/workflows/build.yml
-       with:
+       
+    - uses: ./.github/workflows/build.yml
+      with:
           image-name: nankov/node
           tag: '1'
           aws-region: eu-west-1
