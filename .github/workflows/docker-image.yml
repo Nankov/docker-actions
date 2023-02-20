@@ -36,9 +36,6 @@ jobs:
           aws-region: eu-west-1
           account-id: '693725700380'
           repository: appstart-repo
-    # - run: docker build -t nankov/node .
-    # - run:  docker tag nankov/node 693725700380.dkr.ecr.eu-west-1.amazonaws.com/appstart-repo:1
-    # - run: docker push 693725700380.dkr.ecr.eu-west-1.amazonaws.com/appstart-repo:1
  
           
 
