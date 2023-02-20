@@ -24,7 +24,8 @@ jobs:
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v1
        
-    - uses: ./.github/workflows/build.yml
+    - name: Build tag and push image
+      uses: ./.github/workflows/build.yml
       with:
           image-name: nankov/node
           tag: '1'
